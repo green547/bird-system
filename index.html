@@ -7,9 +7,27 @@
                 button:hover{
                     background-color:rgb(241, 8, 8);
                 }
+                .navbar{
+                    background-color:#0aed65;
+                    padding:15px 30px;
+                    display: flex;
+                    justify-content: center; /* 设置导航栏内容水平居中 */
+                    align-items: center;/* 设置导航栏内容垂直居中 */
+                    gap: 10px;
+                }
+                .navbar a{
+                    padding:10px;
+                    text-decoration:none;
+                }
+                .navbar a:hover{
+                    background-color:rgb(250, 92, 92);
+                }
+
                 h1{
                     color:black;
                     text-align:center;
+                    margin: 5px auto;
+                    font-size: 50px;
                 }
                 body{
                     background-color: 	#12dbbc69;
@@ -17,39 +35,105 @@
                     font-family:Arial, Helvetica, sans-serif;
                     margin: 0 auto;/* 上下外边距为0，左右外边距自动分配 */
                     padding: 35px; /* 设置页面内容的内边距 */
-                    max-width: 500px; /* 设置页面内容的最大宽度 */
+                    max-width: 800px; /* 设置页面内容的最大宽度 */
                 }
                 button{
-                    background-color:rgb(5, 66, 123);
+                    background-color:rgb(224, 65, 65);
                     color: white;
-                    border-radius: 5px;
+                    border:none;
+                    padding: 3px 5px;/* 设置按钮的内边距 */
+                    border-radius: 6px;/* 设置按钮的圆角半径 */
+                    cursor: pointer;/* 鼠标悬停时显示为手型 */
+                    font-size:14px;
+                }
+                input[type="text"], input[type="file"]{
+                    padding: 5px; /* 设置输入框的内边距 */
+                    border-radius: 4px; /* 设置输入框的圆角半径 */
+                    border: 1px solid #ccc; /* 设置输入框的边框样式 */
+                    font-size: 14px; /* 设置输入框的字体大小 */
+                    margin: 5px 0; /* 设置输入框的外边距 */
+                }
+                .result-area {
+                            margin-top: 20px;
+                            padding: 15px;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            min-height: 100px;
+                        }
+                .high-confidence {
+                    color: green;
+                    font-weight: bold;
+                }
+                .low-confidence {
+                    color: red;
+                    font-weight: bold;
                 }
         </style>
     </head>
     <body>
-        <h1>🐦 湿地鸟类检测平台!</h1>
-            <p>欢迎使用鸟类智能识别系统</p>
-        <h2>系统功能</h2>
-            <p>本系统支持鸟类图片上传、自动识别、数据统计和预警</p>
-        <h3>可识别的鸟类</h3>
-            <ol>    <!-- ordered list：有序列表（带数字） -->
-                <li>朱鹮</li>
-                <li>黑鹳</li>
-                <li>白鹤</li>
-            </ol>
-        <h4>图片示例</h4>
-            <form>
-                <img src="https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/8745ce69842b456695c815f1af91af55~tplv-tt-origin-web:gif.jpeg?_iz=58558&from=article.pc_detail&lk3s=953192f4&x-expires=1791724620&x-signature=641GUgrDiw52y2%2BxDyO6gpPsKFQ%3D" alt="图片加载失败" width="500" height="300">
-                <hr> <!-- 分隔线(换行),br(换行)-->
-                <label for="my_name">请输入您的姓名：</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
-                <input type="text" id="my_name">
-                <br>
-                <button>开始识别</button>
-                <br>
-                <label for="my_input">上传图片</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
-                <br>
-                <input type="file" accept="image/*" id="my_input"> <!-- input 标签用于创建交互式控件，type="file" 表示文件上传，accept="image/*" 表示只接受图片文件 -->
-                <input type="submit" id="my_submit">
-            </form>
+        <nav class="navbar">
+            <a href="#">首页</a> |
+            <a href="#">识别</a> |
+            <a href="#">数据统计</a> |
+            <a href="#">预警</a>
+        </nav>
+        <div class="container">
+            <h1>🐦 湿地鸟类检测平台!</h1>
+                <p>欢迎使用鸟类智能识别系统</p>
+            <h2>系统功能</h2>
+                <p>本系统支持鸟类图片上传、自动识别、数据统计和预警</p>
+            <h3>可识别的鸟类</h3>
+                <ol>    <!-- ordered list：有序列表（带数字） -->
+                    <li>朱鹮</li>
+                    <li>黑鹳</li>
+                    <li>白鹤</li>
+                </ol>
+            <h4>图片示例</h4>
+            <img src="https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/8745ce69842b456695c815f1af91af55~tplv-tt-origin-web:gif.jpeg?_iz=58558&from=article.pc_detail&lk3s=953192f4&x-expires=1791724620&x-signature=641GUgrDiw52y2%2BxDyO6gpPsKFQ%3D" alt="图片加载失败" width="500" height="300">
+                <form id="my_form">                   
+                    <hr> <!-- 分隔线(换行),br(换行)-->
+                    <label for="my_name">请输入您的姓名：</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
+                    <input type="text" id="my_name">
+                    <br>
+                    <label for="my_input">上传图片</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
+                    <br>
+                    <input type="file" accept="image/*" id="my_input"> <!-- input 标签用于创建交互式控件，type="file" 表示文件上传，accept="image/*" 表示只接受图片文件 -->
+                    <button type="submit">开始识别</button> <!-- button 标签用于创建按钮，type="submit" 表示提交表单 -->
+                </form>
+                <div class="result-area" id="result">
+                    <p>等待识别...</p>
+                </div>
+        <script>
+            const form = document.getElementById('my_form');
+            const resultDiv = document.getElementById('result');
+            form.addEventListener('submit', function(event){
+                event.preventDefault(); // 阻止表单默认提交行为
+                const name = document.getElementById('my_name').value; // 获取输入的姓名
+                const fileInput = document.getElementById('my_input'); // 获取文件输入元素
+                const file = fileInput.files[0]; // 获取上传的文件
+                if(name && file){ // 检查姓名和文件是否都存在
+                    alert(`姓名: ${name}\n文件名: ${file.name}`); // 弹出提示框显示姓名和文件名
+                      // 模拟识别结果（后面这里会换成真实的 API 调用）
+                const mockResult = {
+                    birdName: '白鹭',
+                    confidence: 0.42
+                };
+                
+                // 根据置信度选择不同的样式类
+                const confidenceClass = mockResult.confidence >= 0.8 
+                    ? 'high-confidence' 
+                    : 'low-confidence';
+                
+                // 更新页面显示
+                resultDiv.innerHTML = `
+                    <h3>识别结果</h3>
+                    <p>鸟类：<strong>${mockResult.birdName}</strong></p>
+                    <p>置信度：<span class="${confidenceClass}">${mockResult.confidence}</span></p>
+                `;
+                } else {
+                    alert('请填写姓名并上传图片'); // 提示用户填写信息
+                }
+            });
+        </script>        
     </body>
 </html>
