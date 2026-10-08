@@ -1,0 +1,55 @@
+<!DOCTYPE html> <!-- 声明这是 HTML5 文档 -->
+<html lang="zh-CN">   <!-- 根标签，所有内容都在里面 -->
+    <head>
+        <meta charset="UTF-8"> <!-- 字符编码，防止中文乱码 -->
+        <title>鸟类识别系统</title> <!-- 网页标题 -->
+        <style>
+                button:hover{
+                    background-color:rgb(241, 8, 8);
+                }
+                h1{
+                    color:black;
+                    text-align:center;
+                }
+                body{
+                    background-color: 	#12dbbc69;
+                    color:#333;
+                    font-family:Arial, Helvetica, sans-serif;
+                    margin: 0 auto;/* 上下外边距为0，左右外边距自动分配 */
+                    padding: 35px; /* 设置页面内容的内边距 */
+                    max-width: 500px; /* 设置页面内容的最大宽度 */
+                }
+                button{
+                    background-color:rgb(5, 66, 123);
+                    color: white;
+                    border-radius: 5px;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>🐦 湿地鸟类检测平台!</h1>
+            <p>欢迎使用鸟类智能识别系统</p>
+        <h2>系统功能</h2>
+            <p>本系统支持鸟类图片上传、自动识别、数据统计和预警</p>
+        <h3>可识别的鸟类</h3>
+            <ol>    <!-- ordered list：有序列表（带数字） -->
+                <li>朱鹮</li>
+                <li>黑鹳</li>
+                <li>白鹤</li>
+            </ol>
+        <h4>图片示例</h4>
+            <form>
+                <img src="https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/8745ce69842b456695c815f1af91af55~tplv-tt-origin-web:gif.jpeg?_iz=58558&from=article.pc_detail&lk3s=953192f4&x-expires=1791724620&x-signature=641GUgrDiw52y2%2BxDyO6gpPsKFQ%3D" alt="图片加载失败" width="500" height="300">
+                <hr> <!-- 分隔线(换行),br(换行)-->
+                <label for="my_name">请输入您的姓名：</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
+                <input type="text" id="my_name">
+                <br>
+                <button>开始识别</button>
+                <br>
+                <label for="my_input">上传图片</label> <!-- label 标签用于定义表单控件的标签，for 属性指定与之关联的表单控件的 id -->
+                <br>
+                <input type="file" accept="image/*" id="my_input"> <!-- input 标签用于创建交互式控件，type="file" 表示文件上传，accept="image/*" 表示只接受图片文件 -->
+                <input type="submit" id="my_submit">
+            </form>
+    </body>
+</html>
